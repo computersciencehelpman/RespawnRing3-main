@@ -29,47 +29,85 @@ export default function Layout({ children }) {
       <Rightbar />
       <DarkModeToggle />
 
+      {/* MAIN CONTENT */}
       <main className="pt-32 flex flex-col items-center justify-center flex-grow text-center relative z-10">
         {children}
       </main>
 
       {/* 🔻 TEAM FOOTER (GLOBAL) */}
-      <footer className="w-full text-center text-sm text-white/80 py-6 relative z-10">
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
+      <footer className="w-full py-8 relative z-10">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 px-4">
+
+          {/* Card 1 */}
           <a
             href="https://twitter.com/ShilliBilli"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-purple-400 transition"
+            className="inline-block"
           >
-            ShilliBilli (@ShilliBilli)
+            <div
+              style={{ backgroundColor: '#ffffff' }}
+              className="isolate bg-white border border-black/20 rounded-lg
+                         px-5 py-4 text-center
+                         shadow-md hover:-translate-y-1
+                         hover:border-purple-400
+                         hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]
+                         transition"
+            >
+              <div className="text-lg font-semibold text-black">
+                ShilliBilli / @ShilliBilli
+              </div>
+            </div>
           </a>
 
-          <span className="hidden sm:inline text-white/40">•</span>
-
+          {/* Card 2 */}
           <a
             href="https://twitter.com/bsaurav796"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-purple-400 transition"
+            className="inline-block"
           >
-            Degen S | $DOUGH CZAR (@bsaurav796)
+            <div
+              style={{ backgroundColor: '#ffffff' }}
+              className="isolate bg-white border border-black/20 rounded-lg
+                         px-5 py-4 text-center
+                         shadow-md hover:-translate-y-1
+                         hover:border-purple-400
+                         hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]
+                         transition"
+            >
+              <div className="text-lg font-semibold text-black">
+                Degen S | $DOUGH CZAR / @bsaurav796
+              </div>
+            </div>
           </a>
 
-          <span className="hidden sm:inline text-white/40">•</span>
-
+          {/* Card 3 */}
           <a
             href="https://twitter.com/LoreKfw"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-purple-400 transition"
+            className="inline-block"
           >
-            kfw (@LoreKfw)
+            <div
+              style={{ backgroundColor: '#ffffff' }}
+              className="isolate bg-white border border-black/20 rounded-lg
+                         px-5 py-4 text-center
+                         shadow-md hover:-translate-y-1
+                         hover:border-purple-400
+                         hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]
+                         transition"
+            >
+              <div className="text-lg font-semibold text-black">
+                kfw / @LoreKfw
+              </div>
+            </div>
           </a>
+
         </div>
       </footer>
 
-      {/* ✅ Froth Key image - leaderboard only */}
+      {/* ✅ Froth Key image — leaderboard only */}
       {isLeaderboard && (
         <div
           className="z-[1000]"
@@ -96,3 +134,7 @@ export default function Layout({ children }) {
     </div>
   );
 }
+
+
+
+
