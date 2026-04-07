@@ -29,16 +29,12 @@ export default function Layout({ children }) {
       <Rightbar />
       <DarkModeToggle />
 
-      {/* MAIN CONTENT */}
       <main className="pt-32 flex flex-col items-center justify-center flex-grow text-center relative z-10">
         {children}
       </main>
 
-      {/* 🔻 TEAM FOOTER (GLOBAL) */}
-      <footer className="w-full py-8 relative z-10">
+      <footer className="w-full py-12 relative z-10">
         <div className="flex flex-col sm:flex-row justify-center items-center gap-6 px-4">
-
-          {/* Card 1 */}
           <a
             href="https://twitter.com/ShilliBilli"
             target="_blank"
@@ -47,12 +43,9 @@ export default function Layout({ children }) {
           >
             <div
               style={{ backgroundColor: '#ffffff' }}
-              className="isolate bg-white border border-black/20 rounded-lg
-                         px-5 py-4 text-center
-                         shadow-md hover:-translate-y-1
-                         hover:border-purple-400
-                         hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]
-                         transition"
+              className="isolate border border-black/20 rounded-lg px-5 py-4 text-center
+                         shadow-md hover:-translate-y-1 hover:border-purple-400
+                         hover:shadow-[0_0_20px_rgba(168,85,247,0.6)] transition"
             >
               <div className="text-lg font-semibold text-black">
                 ShilliBilli / @ShilliBilli
@@ -60,7 +53,6 @@ export default function Layout({ children }) {
             </div>
           </a>
 
-          {/* Card 2 */}
           <a
             href="https://twitter.com/bsaurav796"
             target="_blank"
@@ -69,12 +61,9 @@ export default function Layout({ children }) {
           >
             <div
               style={{ backgroundColor: '#ffffff' }}
-              className="isolate bg-white border border-black/20 rounded-lg
-                         px-5 py-4 text-center
-                         shadow-md hover:-translate-y-1
-                         hover:border-purple-400
-                         hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]
-                         transition"
+              className="isolate border border-black/20 rounded-lg px-5 py-4 text-center
+                         shadow-md hover:-translate-y-1 hover:border-purple-400
+                         hover:shadow-[0_0_20px_rgba(168,85,247,0.6)] transition"
             >
               <div className="text-lg font-semibold text-black">
                 Degen S | $DOUGH CZAR / @bsaurav796
@@ -82,7 +71,6 @@ export default function Layout({ children }) {
             </div>
           </a>
 
-          {/* Card 3 */}
           <a
             href="https://twitter.com/LoreKfw"
             target="_blank"
@@ -91,31 +79,22 @@ export default function Layout({ children }) {
           >
             <div
               style={{ backgroundColor: '#ffffff' }}
-              className="isolate bg-white border border-black/20 rounded-lg
-                         px-5 py-4 text-center
-                         shadow-md hover:-translate-y-1
-                         hover:border-purple-400
-                         hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]
-                         transition"
+              className="isolate border border-black/20 rounded-lg px-5 py-4 text-center
+                         shadow-md hover:-translate-y-1 hover:border-purple-400
+                         hover:shadow-[0_0_20px_rgba(168,85,247,0.6)] transition"
             >
               <div className="text-lg font-semibold text-black">
                 kfw / @LoreKfw
               </div>
             </div>
           </a>
-
         </div>
       </footer>
 
-      {/* ✅ Froth Key image — leaderboard only */}
       {isLeaderboard && (
         <div
           className="z-[1000]"
-          style={{
-            position: 'fixed',
-            bottom: '1rem',
-            right: '1rem',
-          }}
+          style={{ position: 'fixed', bottom: '1rem', right: '1rem' }}
         >
           <Link href="/froth">
             <div
@@ -134,7 +113,3 @@ export default function Layout({ children }) {
     </div>
   );
 }
-
-
-
-
