@@ -1,11 +1,22 @@
-// pages/leaderboard.js
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export default function LeaderboardPage({ holders = [], totalSupply = 0, tokenPrice = 0 }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      router.replace(router.asPath);
+    }, 30000); // refresh every 30 seconds
+
+    return () => clearInterval(interval);
+  }, [router]);
+
   return (
     <div className="flex justify-center items-start py-16 min-h-screen bg-black text-white">
       <div className="bg-white text-black rounded-xl shadow-lg p-6 w-fit max-w-full overflow-auto">
         <h1 className="text-2xl font-bold mb-6 text-center">Top 20 Holders</h1>
+
         <table className="table-auto border-collapse text-sm sm:text-base">
           <thead>
             <tr className="text-left text-gray-700 uppercase text-xs border-b border-gray-300">
@@ -16,10 +27,12 @@ export default function LeaderboardPage({ holders = [], totalSupply = 0, tokenPr
               <th className="pb-2 pr-4">Value (USD)</th>
             </tr>
           </thead>
+
           <tbody>
             {holders.map((holder, index) => (
-              <tr key={index} className="hover:bg-gray-100">
+              <tr key={holder.owner} className="hover:bg-gray-100">
                 <td className="py-2 pr-4 font-semibold">{index + 1}</td>
+
                 <td className="py-2 pr-4">
                   <a
                     href={`https://solscan.io/account/${holder.owner}`}
@@ -30,13 +43,20 @@ export default function LeaderboardPage({ holders = [], totalSupply = 0, tokenPr
                     {holder.owner.slice(0, 4)}...{holder.owner.slice(-4)}
                   </a>
                 </td>
-                <td className="py-2 pr-4">{Number(holder.amount).toLocaleString()}</td>
+
+                <td className="py-2 pr-4">
+                  {Number(holder.amount).toLocaleString(undefined, {
+                    maximumFractionDigits: 2,
+                  })}
+                </td>
+
                 <td className="py-2 pr-4">
                   {totalSupply > 0
                     ? ((holder.amount / totalSupply) * 100).toFixed(2)
                     : '—'}
                   %
                 </td>
+
                 <td className="py-2 pr-4">
                   ${(holder.amount * tokenPrice).toFixed(2)}
                 </td>
@@ -47,7 +67,7 @@ export default function LeaderboardPage({ holders = [], totalSupply = 0, tokenPr
 
         <div className="mt-6 text-sm text-gray-600">
           <p>Total Supply: {Number(totalSupply).toLocaleString()}</p>
-          <p>Token Price (USD): ${tokenPrice.toFixed(8)}</p>
+          <p>Token Price (USD): ${Number(tokenPrice).toFixed(8)}</p>
         </div>
       </div>
     </div>
@@ -103,7 +123,7 @@ export async function getServerSideProps() {
     });
 
     const heliusData = await heliusRes.json();
-    console.log("✅ Helius response:", JSON.stringify(heliusData, null, 2));
+    console.log('✅ Helius response:', JSON.stringify(heliusData, null, 2));
 
     const tokenAccounts = heliusData?.result?.token_accounts || [];
 
